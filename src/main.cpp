@@ -11,12 +11,13 @@
 #define NEOPIXEL_PIN 18
 #define BTN_PIN 2
 #define FAN_PIN 4
+#define PWR_PIN 3
 #define STEPS 8
 
-bool debug = true;
+bool debug = false;
 WifiConfig wifiConfig(WIFI_SSID, WIFI_PASSWORD, "ESP32S2 Tower Fan", "tower-fan", AUTH_USER, AUTH_PASS, true, true, debug);
 Adafruit_NeoPixel pixel(1, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800);
-HAfanHelper fan(wifiConfig, "fan", FAN_PIN, STEPS, 0, 0, false, debug);
+HAfanHelper fan(wifiConfig, "fan", FAN_PIN, STEPS, 0, 0, true, debug, PWR_PIN);
 OneButton button(BTN_PIN);
 Timer<1> timer;
 uint8_t R=2, G=0, B=0;
